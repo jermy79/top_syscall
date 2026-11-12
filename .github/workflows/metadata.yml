@@ -1,0 +1,32 @@
+name: Generate gadget metadata
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  metadata:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Inspektor Gadget
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v0.58.0 \
+            --repo inspektor-gadget/inspektor-gadget \
+            --pattern ig-linux-amd64-v0.58.0.tar.gz
+          tar -xzf ig-linux-amd64-v0.58.0.tar.gz
+          sudo install -m 755 ig /usr/local/bin/ig
+
+      - name: Generate metadata
+        run: make metadata IMAGE_TAG=latest
+
+      - name: Upload generated metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: gadget-metadata
+          path: gadget.yaml
