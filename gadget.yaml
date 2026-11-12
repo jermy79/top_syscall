@@ -1,4 +1,4 @@
-name: "top_syscall"
+name: top_syscall
 description: Syscall attempts in this fetch interval
 homepageURL: https://github.com/jermy79/top_syscall
 documentationURL: https://github.com/jermy79/top_syscall#readme
@@ -6,11 +6,39 @@ sourceURL: https://github.com/jermy79/top_syscall
 datasources:
   calls:
     fields:
+      calls:
+        annotations:
+          columns.alignment: right
+          columns.width: "12"
+          description: Syscall attempts in this fetch interval
+      proc:
+        annotations:
+          description: Raw Linux syscall number
       process_id:
         annotations:
           columns.hidden: "true"
-      calls:
+      syscall_raw:
         annotations:
-          description: Syscall attempts in this fetch interval
-          columns.width: "12"
-          columns.alignment: right
+          description: 'TODO: Fill field description'
+params:
+  ebpf:
+    targ_comm:
+      key: targ_comm
+      defaultValue: ""
+      description: 'TODO: Fill parameter description'
+    targ_gid:
+      key: targ_gid
+      defaultValue: ""
+      description: 'TODO: Fill parameter description'
+    targ_pid:
+      key: targ_pid
+      defaultValue: ""
+      description: 'TODO: Fill parameter description'
+    targ_tid:
+      key: targ_tid
+      defaultValue: ""
+      description: 'TODO: Fill parameter description'
+    targ_uid:
+      key: targ_uid
+      defaultValue: ""
+      description: 'TODO: Fill parameter description'
