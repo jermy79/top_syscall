@@ -1,5 +1,5 @@
 name: "top_syscall"
-description: Periodically report chdir syscall counts by process
+description: Syscall attempts in this fetch interval
 homepageURL: https://github.com/jermy79/top_syscall
 documentationURL: https://github.com/jermy79/top_syscall#readme
 sourceURL: https://github.com/jermy79/top_syscall
@@ -11,6 +11,6 @@ datasources:
           columns.hidden: "true"
       calls:
         annotations:
-          description: Chdir attempts in this fetch interval
+          description: Syscall attempts in this fetch interval
           columns.width: "12"
           columns.alignment: right
